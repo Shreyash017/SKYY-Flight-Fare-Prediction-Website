@@ -1,0 +1,236 @@
+.header_aboutUs_1 {
+    height: 500px;
+    width: 100%;
+    background-color: #0047Ab;
+    overflow: hidden;
+}
+
+.cross_div {
+    width: 35%;
+    height: 600px;
+    float: left;
+    transform: rotate(-12deg);
+}
+
+#cross_div_1 {
+    background: rgba(255, 255, 255, 0.25);
+    margin-left: -40px;
+    margin-top: -50px;
+}
+
+#cross_div_2 {
+    background: rgba(255, 255, 255, 0.35);
+    margin-left: 20px;
+    margin-top: -50px;
+}
+
+#cross_div_3 {
+    background: rgba(255, 255, 255, 0.45);
+    margin-left: 20px;
+    margin-right: -800px;
+    margin-top: -50px;
+}
+
+.header_aboutUs_2 {
+    justify-content: center;
+    text-align: center;
+    margin-top: -300px;
+    position: relative;
+}
+
+.header_aboutUs_2 h1 {
+    font-size: 72px;
+    color: white;
+    font-style: normal;
+    font-weight: 600;
+}
+
+.card_vedant {
+    background-color: #f0f0f0;
+    width: 80%;
+    height: 500px;
+    margin-left: 10%;
+    border-radius: 35px;
+    box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.15);
+}
+
+.cards {
+    background-color: #f0f0f0;
+    width: 80%;
+    height: 500px;
+    margin-left: 10%;
+    border-radius: 35px;
+    box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.15);
+}
+
+#card_vedant {
+    margin-top: 320px;
+}
+
+#card_shreyash {
+    margin-top: 90px;
+}
+
+#card_banti {
+    margin-top: 90px;
+    margin-bottom: 110px;
+}
+
+.card_details {
+    background-color: #0046A8;
+    width: 60%;
+    height: 500px;
+    float: left;
+    overflow: hidden;
+}
+
+#VB_details {
+    border-radius: 35px 0 0 35px;
+}
+
+#SS_details {
+    border-radius: 0 35px 35px 0;
+}
+
+.cross_div_cards {
+    background: rgba(255, 255, 255, 0.1);
+    width: 80%;
+    height: 900px;
+    float: left;
+    margin-top: -100px;
+}
+
+#cross_div_vedant {
+    margin-left: 47px;
+    transform: rotate(160deg);
+}
+
+#cross_div_shreyash {
+    margin-left: 70px;
+    transform: rotate(20deg);
+}
+
+.details_common {
+    width: 100%;
+    height: 50px;
+    margin-top: 60px;
+}
+
+.details_common h3 {
+    color: white;
+    position: absolute;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+}
+
+#vedant_h3 {
+    padding-left: 70px;
+}
+
+#shreyash_h3 {
+    padding-left: 160px;
+}
+
+.details_common hr {
+    background: rgba(255, 255, 255, 0.23);
+    mix-blend-mode: lighten;
+    opacity: 0.55;
+    height: 2px;
+    margin-top: 40px;
+    position: absolute;
+}
+
+#vedant_hr {
+    width: 20%;
+    margin-left: 70px;
+}
+
+#shreyash_hr {
+    width: 23%;
+    margin-left: 160px;
+}
+
+#banti_hr {
+    width: 17%;
+    margin-left: 70px;
+}
+
+.details_common p {
+    color: white;
+    width: 400px;
+    position: absolute;
+    margin-left: 70px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 17px;
+    text-align: justify;
+}
+
+#vedant_p1 {
+    margin-top: 80px;
+}
+
+#vedant_p2 {
+    margin-top: 200px;
+}
+
+#shreyash_p1 {
+    margin-left: 160px;
+    margin-top: 80px;
+}
+
+#shreyash_p2 {
+    margin-left: 160px;
+    margin-top: 200px;
+}
+
+.social_handles {
+    color: white;
+    width: 400px;
+    position: absolute;
+    margin-top: 250px;
+}
+
+#vedant_social_handles {
+    margin-left: 70px;
+}
+
+#shreyash_social_handles {
+    margin-left: 160px;
+}
+
+.social_handles div {
+    width: 35px;
+    height: 30px;
+    float: left;
+}
+
+.social_handles_div {
+    margin-left: 35px;
+}
+
+.social_handles div a {
+    text-decoration: none;
+}
+
+.card_photo {
+    width: 40%;
+    height: 500px;
+    float: left;
+}
+
+.card_photo img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+}
+
+#VB_img {
+    border-radius: 0 35px 35px 0;
+}
+
+#SS_img {
+    border-radius: 35px 0 0 35px;
+}

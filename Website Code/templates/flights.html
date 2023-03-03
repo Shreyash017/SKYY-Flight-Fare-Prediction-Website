@@ -1,0 +1,2161 @@
+{% extends 'base.html' %}
+{% block page-content %}
+
+<script src="/static/js/flights.js"></script>
+<div class="bg-image" style="height: 100%">
+    <!-- <img src={{ url2 }} height="100%" width="100%" alt="Image1"> -->
+    <img src="../static/img/bg.png" height="100%" width="100%" alt="Image1">
+
+    <div class="container">
+        <div class="form-button btn-group btn-group-toggle">
+            <button type="button" id="btn1" onclick="asd(1)" class="btn btn-lg" autofocus
+                style="background-color: white; color: black; font-weight: bold; border-radius: 15px 0px 0px 0px;"><i
+                    id="icon1" class="fas fa-arrow-right"
+                    style="padding-right: 4%; color: #0047AB;"></i>One-way</button>
+            <button type="button" id="btn2" onclick="asd(2)" class="btn btn-lg"
+                style="background-color: rgba(255,255,255,0.1); color: white; backdrop-filter: blur(10px);"><i
+                    id="icon2" class="fa fa-random" style="padding-right: 4%;"></i> Multi-city</button>
+            <button type="button" id="btn3" onclick="asd(4)" class="btn btn-lg"
+                style="background-color: rgba(255,255,255,0.1); color: white; backdrop-filter: blur(10px); border-radius: 0px 15px 0px 0px;"><i
+                    id="icon3" class="fa fa-ticket" style="padding-right: 4%;"></i> Coupons</button>
+        </div>
+
+        <!-- For The Color Change of Form Buttons -->
+        <script>
+            const btn1 = document.getElementById('btn1');
+            btn1.addEventListener('click', function onclick() {
+                btn1.style.backgroundColor = 'white';
+                btn1.style.color = 'black';
+                btn1.style.fontWeight = 'bold';
+                btn2.style.backgroundColor = 'rgba(255,255,255,0.1)';
+                btn2.style.color = 'white';
+                btn2.style.fontWeight = 'normal';
+                btn3.style.backgroundColor = 'rgba(255,255,255,0.1)';
+                btn3.style.color = 'white';
+                btn3.style.fontWeight = 'normal';
+            }
+            );
+            const btn2 = document.getElementById('btn2');
+            btn2.addEventListener('click', function onclick() {
+                btn2.style.backgroundColor = 'white';
+                btn2.style.color = 'black';
+                btn2.style.fontWeight = 'bold';
+                btn1.style.backgroundColor = 'rgba(255,255,255,0.1)';
+                btn1.style.color = 'white';
+                btn1.style.fontWeight = 'normal';
+                btn3.style.backgroundColor = 'rgba(255,255,255,0.1)';
+                btn3.style.color = 'white';
+                btn3.style.fontWeight = 'normal';
+            }
+            );
+            const btn3 = document.getElementById('btn3');
+            btn3.addEventListener('click', function onclick() {
+                btn3.style.backgroundColor = 'white';
+                btn3.style.color = 'black';
+                btn3.style.fontWeight = 'bold';
+                btn1.style.backgroundColor = 'rgba(255,255,255,0.1)';
+                btn1.style.color = 'white';
+                btn1.style.fontWeight = 'normal';
+                btn2.style.backgroundColor = 'rgba(255,255,255,0.1)';
+                btn2.style.color = 'white';
+                btn2.style.fontWeight = 'normal';
+            });
+        </script>
+
+
+        <div class="form-content">
+            <form class="form-inline oneWay" id="oneWay" method='post'>
+                {% csrf_token %}
+                <table style="border-spacing: 10%; width: 100%;">
+                    <tr>
+                        <th style="text-align: center; vertical-align: bottom;">
+                            <!-- Source -->
+                            <label for="Src1">Source</label>
+                        </th>
+                        <th style="text-align: center; vertical-align: bottom;">
+                            Destination
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select name="Src" id="Src1" style="width: 100%;" placeholder="Source" required>
+                                <option value="Select Source">Select Source</option>
+                                <option>Abudhabi</option>
+                                <option>Addis Ababa</option>
+                                <option>Addu City</option>
+                                <option>Agartala</option>
+                                <option>Agatti Island</option>
+                                <option>Agra</option>
+                                <option>Ahmedabad</option>
+                                <option>Aizawl</option>
+                                <option>Al Ain</option>
+                                <option>Allahabad</option>
+                                <option>Almaty</option>
+                                <option>Amritsar</option>
+                                <option>Amsterdam</option>
+                                <option>Antalya</option>
+                                <option>Ashgabat</option>
+                                <option>Astana</option>
+                                <option>Aurangabad</option>
+                                <option>Bagdogra</option>
+                                <option>Baghdad</option>
+                                <option>Bahrain</option>
+                                <option>Baku</option>
+                                <option>Bangkok</option>
+                                <option>Basra</option>
+                                <option>Belgaum</option>
+                                <option>Bengaluru</option>
+                                <option>Bhopal</option>
+                                <option>Bhubaneswar</option>
+                                <option>Bhuj</option>
+                                <option>Birmingham</option>
+                                <option>Bishkek</option>
+                                <option>Brusells</option>
+                                <option>Cairo</option>
+                                <option>Chandigarh</option>
+                                <option>Chennai</option>
+                                <option>Chicago</option>
+                                <option>Chittagong</option>
+                                <option>Cochin</option>
+                                <option>Coimbatore</option>
+                                <option>Cologne</option>
+                                <option>Colombo</option>
+                                <option>Copenhagen</option>
+                                <option>Dammam</option>
+                                <option>Dehra Dun</option>
+                                <option>Delhi</option>
+                                <option>Denpasar</option>
+                                <option>Dhaka</option>
+                                <option>Dharamsala</option>
+                                <option>Dibrugarh</option>
+                                <option>Dimapur</option>
+                                <option>Don Mueang</option>
+                                <option>Dubai</option>
+                                <option>Dushanbe</option>
+                                <option>Frankfurt</option>
+                                <option>Gaya</option>
+                                <option>Goa</option>
+                                <option>Gorakhpur</option>
+                                <option>Guangzhou</option>
+                                <option>Guwahati</option>
+                                <option>Helnski</option>
+                                <option>Herat</option>
+                                <option>Ho Chi Minh City</option>
+                                <option>Hong Kong</option>
+                                <option>Hubli</option>
+                                <option>Hyderabad</option>
+                                <option>Imphal</option>
+                                <option>Indore</option>
+                                <option>Istanbul</option>
+                                <option>Jaipur</option>
+                                <option>Jaisalmer</option>
+                                <option>Jammu</option>
+                                <option>Jeddah</option>
+                                <option>Jodhpur</option>
+                                <option>Johannesberg</option>
+                                <option>Jorhat</option>
+                                <option>Kabul</option>
+                                <option>Kadapa</option>
+                                <option>Kandahar</option>
+                                <option>Kannur</option>
+                                <option>Karachi</option>
+                                <option>Kathmandu</option>
+                                <option>Kigali</option>
+                                <option>Kochi</option>
+                                <option>Kolkata</option>
+                                <option>Kozhikode</option>
+                                <option>Kualalumpur</option>
+                                <option>Kunming</option>
+                                <option>Kuwait</option>
+                                <option>Lahore</option>
+                                <option>Leh</option>
+                                <option>Leipzig</option>
+                                <option>Lilabari</option>
+                                <option>London</option>
+                                <option>Lucknow</option>
+                                <option>Luxembourg</option>
+                                <option>Madrid</option>
+                                <option>Madurai</option>
+                                <option>Male</option>
+                                <option>Malpensa</option>
+                                <option>Manchester</option>
+                                <option>Mandalay</option>
+                                <option>Mangalore</option>
+                                <option>Maruitius</option>
+                                <option>Mashhad</option>
+                                <option>Mazar-I-Sharif</option>
+                                <option>Medina</option>
+                                <option>Melbourne</option>
+                                <option>Moscow</option>
+                                <option>Muenchen</option>
+                                <option>Mumbai</option>
+                                <option>Muscat</option>
+                                <option>Nagpur</option>
+                                <option>Nairobi</option>
+                                <option>Narita</option>
+                                <option>Navoi</option>
+                                <option>New York</option>
+                                <option>Newark</option>
+                                <option>Osaka</option>
+                                <option>Paris</option>
+                                <option>Patna</option>
+                                <option>Peking</option>
+                                <option>Phuket</option>
+                                <option>Pondicherry</option>
+                                <option>Port Blair</option>
+                                <option>Pune</option>
+                                <option>Raipur</option>
+                                <option>Rajahmundry</option>
+                                <option>Rajkot</option>
+                                <option>Ranchi</option>
+                                <option>Rangoon</option>
+                                <option>Reunion</option>
+                                <option>Riyadh</option>
+                                <option>Rome</option>
+                                <option>Salalah</option>
+                                <option>San Francisco</option>
+                                <option>Seoul</option>
+                                <option>Seychelles</option>
+                                <option>Shanghai</option>
+                                <option>Sharjah</option>
+                                <option>Shenzhen</option>
+                                <option>Silchar</option>
+                                <option>Singapore</option>
+                                <option>Srinagar</option>
+                                <option>Stockholm</option>
+                                <option>Surat</option>
+                                <option>Sydney</option>
+                                <option>Taipae</option>
+                                <option>Tangerang</option>
+                                <option>Tashkent</option>
+                                <option>Tehran</option>
+                                <option>Telaviv</option>
+                                <option>Tirupati</option>
+                                <option>Tokyo</option>
+                                <option>Toronto</option>
+                                <option>Trivandrum</option>
+                                <option>Udaipur</option>
+                                <option>Vadodara</option>
+                                <option>Vancouver</option>
+                                <option>Vienna</option>
+                                <option>Vijayawada</option>
+                                <option>Washington Dc</option>
+                                <option>Zurich</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="Dest" id="Dest1" style="width: 100%;" placeholder="Destination" required>
+                                <option value="">Select Destination</option>
+                                <option>Agartala</option>
+                                <option>Ahmedabad</option>
+                                <option>Ajmer</option>
+                                <option>Allahabad</option>
+                                <option>Amritsar</option>
+                                <option>Aurangabad</option>
+                                <option>Bagdogra</option>
+                                <option>Belgaum</option>
+                                <option>Bengaluru</option>
+                                <option>Bhavnagar</option>
+                                <option>Bhopal</option>
+                                <option>Bhubaneswar</option>
+                                <option>Chandigarh</option>
+                                <option>Chennai</option>
+                                <option>Cochin</option>
+                                <option>Coimbatore</option>
+                                <option>Dehra Dun</option>
+                                <option>Delhi</option>
+                                <option>Dharamsala</option>
+                                <option>Dibrugarh</option>
+                                <option>Dimapur</option>
+                                <option>Diu</option>
+                                <option>Durgapur</option>
+                                <option>Gaya</option>
+                                <option>Goa</option>
+                                <option>Gorakhpur</option>
+                                <option>Guwahati</option>
+                                <option>Gwalior</option>
+                                <option>Hubli</option>
+                                <option>Hyderabad</option>
+                                <option>Imphal</option>
+                                <option>Indore</option>
+                                <option>Jabalpur</option>
+                                <option>Jaipur</option>
+                                <option>Jaisalmer</option>
+                                <option>Jammu</option>
+                                <option>Jamnagar</option>
+                                <option>Jharsuguda</option>
+                                <option>Jodhpur</option>
+                                <option>Jorhat</option>
+                                <option>Kannur</option>
+                                <option>Kanpur</option>
+                                <option>Khajuraho</option>
+                                <option>Kochi</option>
+                                <option>Kolhapur</option>
+                                <option>Kolkata</option>
+                                <option>Kozhikode</option>
+                                <option>Kullu</option>
+                                <option>Leh</option>
+                                <option>Lilabari</option>
+                                <option>Lucknow</option>
+                                <option>Madurai</option>
+                                <option>Mangalore</option>
+                                <option>Mumbai</option>
+                                <option>Mysore</option>
+                                <option>Nagpur</option>
+                                <option>Nanded</option>
+                                <option>Nasik</option>
+                                <option>Pantnagar</option>
+                                <option>Pathankot</option>
+                                <option>Patna</option>
+                                <option>Pondicherry</option>
+                                <option>Porbandar</option>
+                                <option>Port Blair</option>
+                                <option>Puducherry</option>
+                                <option>Pune</option>
+                                <option>Raipur</option>
+                                <option>Rajahmundry</option>
+                                <option>Rajkot</option>
+                                <option>Ranchi</option>
+                                <option>Shirdi</option>
+                                <option>Silchar</option>
+                                <option>Simla</option>
+                                <option>Srinagar</option>
+                                <option>Surat</option>
+                                <option>Tezpur</option>
+                                <option>Tiruchirapally</option>
+                                <option>Tirupati</option>
+                                <option>Trivandrum</option>
+                                <option>Tuticorin</option>
+                                <option>Udaipur</option>
+                                <option>Vadodara</option>
+                                <option>Varanasi</option>
+                                <option>Vijayawada</option>
+                                <option>Visakhapatnam</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="text-align: center; vertical-align: bottom; padding-top: 2%;">
+                            Departure
+                        </th>
+                        <th style="text-align: center; vertical-align: bottom; padding-top: 2%;">
+                            Arrival
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="datetime-local" name="D_Date_Time" id="DDT1" value="2023-01-05T00:00"
+                                min="2023-01-05T00:00"
+                                style="width: 100%; border: 1px solid #aaaaaa; color: #444444; border-radius: 15px; padding-left: 7px;"
+                                placeholder="Departure Date-Time" required>
+                        </td>
+                        <td>
+                            <input type="datetime-local" name="A_Date_Time" id="ADT1" value="2023-01-05T00:00"
+                                min="2023-01-05T00:00"
+                                style="width: 100%; border: 1px solid #aaaaaa; color: #444444; border-radius: 15px; padding-left: 7px;"
+                                placeholder="Arrival Date-Time" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="text-align: center; vertical-align: bottom; padding-top: 2%;">
+                            Airline
+                        </th>
+                        <th style="text-align: center; vertical-align: bottom; padding-top: 2%;">
+                            Class
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select name="Airl" id="Airl1" style="width: 100%;" placeholder="Airline" required>
+                                <option value="">Select Airline</option>
+                                <option>Aer Lingus</option>
+                                <option>Aeroflot Russian Airlines</option>
+                                <option>Air Astana</option>
+                                <option>Air Canada</option>
+                                <option>Air China</option>
+                                <option>Air Connect</option>
+                                <option>Air Europa</option>
+                                <option>Air France</option>
+                                <option>Air India</option>
+                                <option>Air India Express</option>
+                                <option>Air Mauritius</option>
+                                <option>Air Seychelles</option>
+                                <option>AirArabia</option>
+                                <option>AirAsia</option>
+                                <option>Alaska Airlines</option>
+                                <option>Alitalia</option>
+                                <option>All Nippon Airways</option>
+                                <option>American Airlines</option>
+                                <option>Asiana Airlines</option>
+                                <option>Austrian Airways</option>
+                                <option>Azerbaijan Airlines</option>
+                                <option>Bangkok Airways</option>
+                                <option>Belavia Belarusian</option>
+                                <option>Biman Bangladesh</option>
+                                <option>British Airways</option>
+                                <option>Cathay Pacific Airways</option>
+                                <option>China Airlines</option>
+                                <option>China Eastern Airlines</option>
+                                <option>China Southern Airlines</option>
+                                <option>Delta Airlines</option>
+                                <option>Deutsche Bahn Ag</option>
+                                <option>Dragonair</option>
+                                <option>Egypt Airways</option>
+                                <option>El-Al-Israel Airlines</option>
+                                <option>Emirates Airlines</option>
+                                <option>Ethiopian Airlines</option>
+                                <option>Etihad Airways</option>
+                                <option>Eurowings</option>
+                                <option>EVA Airways</option>
+                                <option>Finnair</option>
+                                <option>Flybe</option>
+                                <option>FlyDubai</option>
+                                <option>Garuda Indonesia</option>
+                                <option>GF</option>
+                                <option>GoAir</option>
+                                <option>Gulf Airways</option>
+                                <option>Hahn Air Systems</option>
+                                <option>Hainan Airlines</option>
+                                <option>Hong Kong Airlines</option>
+                                <option>Hong Kong Express Airways</option>
+                                <option>Iberia Airlines</option>
+                                <option>Indigo</option>
+                                <option>Japan Airlines</option>
+                                <option>Jat Airways</option>
+                                <option>Jazeera Airways</option>
+                                <option>Jeju Air</option>
+                                <option>JetBlue Airways</option>
+                                <option>Jetstar Airways</option>
+                                <option>Jetstar Asia</option>
+                                <option>Jetstar Pacific</option>
+                                <option>Juneyao Airlines</option>
+                                <option>Kam Air</option>
+                                <option>Kenya Airways</option>
+                                <option>KLM Airlines</option>
+                                <option>Korean Airways</option>
+                                <option>Kuwait Airways</option>
+                                <option>Livingston Spa</option>
+                                <option>LOT Polish Airlines</option>
+                                <option>Lufthansa Airways</option>
+                                <option>Luxair</option>
+                                <option>Malayasian Airways</option>
+                                <option>MALINDO AIRWAYS</option>
+                                <option>MH</option>
+                                <option>Myanmar Airways Intl</option>
+                                <option>National Air Services</option>
+                                <option>Nepal Airways</option>
+                                <option>Oman Air</option>
+                                <option>Onur Air</option>
+                                <option>Pegasus Airlines</option>
+                                <option>Precision Airlines</option>
+                                <option>Qantas Airways</option>
+                                <option>Qatar Airways</option>
+                                <option>Royal Air Maroc</option>
+                                <option>Royal Brunei Airlines</option>
+                                <option>Royal Jordanian</option>
+                                <option>Rwandair</option>
+                                <option>S7 Airlines</option>
+                                <option>Saudi Arabian Airlines</option>
+                                <option>Scandinavian Airlines</option>
+                                <option>Scoot</option>
+                                <option>Shandong Airlines</option>
+                                <option>Shanghai Airlines</option>
+                                <option>Shenzhen Airlines</option>
+                                <option>Sichuan Airlines</option>
+                                <option>Silk Air</option>
+                                <option>Singapore Airlines</option>
+                                <option>South African Airways</option>
+                                <option>SpiceJet</option>
+                                <option>SriLankan Airlines</option>
+                                <option>Swiss</option>
+                                <option>TAP - Air Portugal</option>
+                                <option>Thai Airways International</option>
+                                <option>Thai Lion Air</option>
+                                <option>Thai Smile</option>
+                                <option>Trujet</option>
+                                <option>Turkish Airlines</option>
+                                <option>Ukraine Intl Airlines</option>
+                                <option>Uni Airways</option>
+                                <option>United Airlines</option>
+                                <option>Ural Airlines</option>
+                                <option>Uzbekistan Airways</option>
+                                <option>Vietnam Airlines</option>
+                                <option>Virgin Atlantic Airways</option>
+                                <option>Vistara</option>
+                                <option>WestJet Airlines</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="seats" id="seats1" style="width: 100%;" placeholder="Class" required>
+                                <option value="Economy">Economy</option>
+                                <option value="Premium Economy">Premium Economy</option>
+                                <option value="Business Class">Business Class</option>
+                                <option value="First Class">First Class</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr style="width: 100%;">
+                        <td colspan="2" class="text-right" style="padding-top: 2%;">
+                            <button class='btn #0d47a1 blue darken-4' type="submit"
+                                style="background-color: #0047AB; color: white; align-items: center; border-radius: 100px; height: 45px; padding: 0 40px;">
+                                <b>Submit</b>
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+
+
+            <form id="multiCity1" method='POST'>
+                {% csrf_token %}
+                <div>
+                    <button type="button" id="btn-multi1" onclick="asd(3)" class="btn btn-outline-primary btn-sm" style="font-weight: 600;">
+                        + Add Layover
+                    </button>
+                </div>
+                <table style="border-spacing: 10%; width: 100%;">
+                    <tr style="width: 100%;">
+                        <th style="text-align: center; vertical-align: bottom; padding-top: 2%; width: 33.33%;">
+                            Source
+                        </th>
+                        <th style="vertical-align: bottom; padding-top: 2%; padding-left: 13.5%; width: 33.33%;">
+                            Stop-1
+                        </th>
+                        <th style="text-align: center; vertical-align: bottom; padding-top: 2%; width: 33.33%;">
+                            Destination
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select name="Src" id="Src2" style="width: 100%;" placeholder="Source" required>
+                                <option value="Select Source">Select Source</option>
+                                <option>Abudhabi</option>
+                                <option>Addis Ababa</option>
+                                <option>Addu City</option>
+                                <option>Agartala</option>
+                                <option>Agatti Island</option>
+                                <option>Agra</option>
+                                <option>Ahmedabad</option>
+                                <option>Aizawl</option>
+                                <option>Al Ain</option>
+                                <option>Allahabad</option>
+                                <option>Almaty</option>
+                                <option>Amritsar</option>
+                                <option>Amsterdam</option>
+                                <option>Antalya</option>
+                                <option>Ashgabat</option>
+                                <option>Astana</option>
+                                <option>Aurangabad</option>
+                                <option>Bagdogra</option>
+                                <option>Baghdad</option>
+                                <option>Bahrain</option>
+                                <option>Baku</option>
+                                <option>Bangkok</option>
+                                <option>Basra</option>
+                                <option>Belgaum</option>
+                                <option>Bengaluru</option>
+                                <option>Bhopal</option>
+                                <option>Bhubaneswar</option>
+                                <option>Bhuj</option>
+                                <option>Birmingham</option>
+                                <option>Bishkek</option>
+                                <option>Brusells</option>
+                                <option>Cairo</option>
+                                <option>Chandigarh</option>
+                                <option>Chennai</option>
+                                <option>Chicago</option>
+                                <option>Chittagong</option>
+                                <option>Cochin</option>
+                                <option>Coimbatore</option>
+                                <option>Cologne</option>
+                                <option>Colombo</option>
+                                <option>Copenhagen</option>
+                                <option>Dammam</option>
+                                <option>Dehra Dun</option>
+                                <option>Delhi</option>
+                                <option>Denpasar</option>
+                                <option>Dhaka</option>
+                                <option>Dharamsala</option>
+                                <option>Dibrugarh</option>
+                                <option>Dimapur</option>
+                                <option>Don Mueang</option>
+                                <option>Dubai</option>
+                                <option>Dushanbe</option>
+                                <option>Frankfurt</option>
+                                <option>Gaya</option>
+                                <option>Goa</option>
+                                <option>Gorakhpur</option>
+                                <option>Guangzhou</option>
+                                <option>Guwahati</option>
+                                <option>Helnski</option>
+                                <option>Herat</option>
+                                <option>Ho Chi Minh City</option>
+                                <option>Hong Kong</option>
+                                <option>Hubli</option>
+                                <option>Hyderabad</option>
+                                <option>Imphal</option>
+                                <option>Indore</option>
+                                <option>Istanbul</option>
+                                <option>Jaipur</option>
+                                <option>Jaisalmer</option>
+                                <option>Jammu</option>
+                                <option>Jeddah</option>
+                                <option>Jodhpur</option>
+                                <option>Johannesberg</option>
+                                <option>Jorhat</option>
+                                <option>Kabul</option>
+                                <option>Kadapa</option>
+                                <option>Kandahar</option>
+                                <option>Kannur</option>
+                                <option>Karachi</option>
+                                <option>Kathmandu</option>
+                                <option>Kigali</option>
+                                <option>Kochi</option>
+                                <option>Kolkata</option>
+                                <option>Kozhikode</option>
+                                <option>Kualalumpur</option>
+                                <option>Kunming</option>
+                                <option>Kuwait</option>
+                                <option>Lahore</option>
+                                <option>Leh</option>
+                                <option>Leipzig</option>
+                                <option>Lilabari</option>
+                                <option>London</option>
+                                <option>Lucknow</option>
+                                <option>Luxembourg</option>
+                                <option>Madrid</option>
+                                <option>Madurai</option>
+                                <option>Male</option>
+                                <option>Malpensa</option>
+                                <option>Manchester</option>
+                                <option>Mandalay</option>
+                                <option>Mangalore</option>
+                                <option>Maruitius</option>
+                                <option>Mashhad</option>
+                                <option>Mazar-I-Sharif</option>
+                                <option>Medina</option>
+                                <option>Melbourne</option>
+                                <option>Moscow</option>
+                                <option>Muenchen</option>
+                                <option>Mumbai</option>
+                                <option>Muscat</option>
+                                <option>Nagpur</option>
+                                <option>Nairobi</option>
+                                <option>Narita</option>
+                                <option>Navoi</option>
+                                <option>New York</option>
+                                <option>Newark</option>
+                                <option>Osaka</option>
+                                <option>Paris</option>
+                                <option>Patna</option>
+                                <option>Peking</option>
+                                <option>Phuket</option>
+                                <option>Pondicherry</option>
+                                <option>Port Blair</option>
+                                <option>Pune</option>
+                                <option>Raipur</option>
+                                <option>Rajahmundry</option>
+                                <option>Rajkot</option>
+                                <option>Ranchi</option>
+                                <option>Rangoon</option>
+                                <option>Reunion</option>
+                                <option>Riyadh</option>
+                                <option>Rome</option>
+                                <option>Salalah</option>
+                                <option>San Francisco</option>
+                                <option>Seoul</option>
+                                <option>Seychelles</option>
+                                <option>Shanghai</option>
+                                <option>Sharjah</option>
+                                <option>Shenzhen</option>
+                                <option>Silchar</option>
+                                <option>Singapore</option>
+                                <option>Srinagar</option>
+                                <option>Stockholm</option>
+                                <option>Surat</option>
+                                <option>Sydney</option>
+                                <option>Taipae</option>
+                                <option>Tangerang</option>
+                                <option>Tashkent</option>
+                                <option>Tehran</option>
+                                <option>Telaviv</option>
+                                <option>Tirupati</option>
+                                <option>Tokyo</option>
+                                <option>Toronto</option>
+                                <option>Trivandrum</option>
+                                <option>Udaipur</option>
+                                <option>Vadodara</option>
+                                <option>Vancouver</option>
+                                <option>Vienna</option>
+                                <option>Vijayawada</option>
+                                <option>Washington Dc</option>
+                                <option>Zurich</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="L1" id="L12" style="width: 100%;" placeholder="Stop-1" required>
+                                <option value="">Select Layover 1</option>
+                                <option>Aberdeen</option>
+                                <option>Abu Dhabi</option>
+                                <option>Addis Ababa</option>
+                                <option>Agartala</option>
+                                <option>Ahmedabad</option>
+                                <option>Aizawl</option>
+                                <option>Almaty</option>
+                                <option>Amman</option>
+                                <option>Amritsar</option>
+                                <option>Amsterdam</option>
+                                <option>Ankara</option>
+                                <option>Ankara </option>
+                                <option>Ashgabat</option>
+                                <option>Astana</option>
+                                <option>Athens</option>
+                                <option>Atlanta</option>
+                                <option>Bagdogra</option>
+                                <option>Bahrain</option>
+                                <option>Baku</option>
+                                <option>Bangalore</option>
+                                <option>Bangkok</option>
+                                <option>Barcelona</option>
+                                <option>Belgrade</option>
+                                <option>Bergamo</option>
+                                <option>Bhopal</option>
+                                <option>Bhubaneswar</option>
+                                <option>Boston</option>
+                                <option>Brisbane</option>
+                                <option>Brussels</option>
+                                <option>Budapest</option>
+                                <option>Cairo</option>
+                                <option>Calgary</option>
+                                <option>Cape Town</option>
+                                <option>Chandigarh</option>
+                                <option>Chengdu</option>
+                                <option>Chennai</option>
+                                <option>Chiang Mai</option>
+                                <option>Chicago</option>
+                                <option>Chittagong</option>
+                                <option>Cochin</option>
+                                <option>Coimbatore</option>
+                                <option>Colombo</option>
+                                <option>Copenhagen</option>
+                                <option>Cuddapah</option>
+                                <option>Dammam</option>
+                                <option>Dar Es Salaam</option>
+                                <option>Dehradun</option>
+                                <option>Delhi</option>
+                                <option>Denpasar</option>
+                                <option>Denver</option>
+                                <option>Detroit</option>
+                                <option>Dhaka</option>
+                                <option>Dibrugarh</option>
+                                <option>Doha</option>
+                                <option>Dubai</option>
+                                <option>Dublin</option>
+                                <option>Durban</option>
+                                <option>Dusseldorf</option>
+                                <option>Edinburgh</option>
+                                <option>Edmonton</option>
+                                <option>Entebbe</option>
+                                <option>Fort Worth</option>
+                                <option>Frankfurt</option>
+                                <option>Fukuoka</option>
+                                <option>Gaya</option>
+                                <option>Geneva</option>
+                                <option>Goa</option>
+                                <option>Guangzhou</option>
+                                <option>Guwahati</option>
+                                <option>Hangzhou</option>
+                                <option>Hanoi</option>
+                                <option>Helsinki</option>
+                                <option>Ho Chi Minh City</option>
+                                <option>Hong Kong</option>
+                                <option>Hubli</option>
+                                <option>Hyderabad</option>
+                                <option>Imphal</option>
+                                <option>Indore</option>
+                                <option>Istanbul</option>
+                                <option>Jabalpur</option>
+                                <option>Jaipur</option>
+                                <option>Jakarta</option>
+                                <option>Jammu</option>
+                                <option>Jeddah</option>
+                                <option>Jodhpur</option>
+                                <option>Johannesburg</option>
+                                <option>JRG</option>
+                                <option>Kabul</option>
+                                <option>Kannur</option>
+                                <option>Kathmandu</option>
+                                <option>Kiev Ukraine</option>
+                                <option>Kigali</option>
+                                <option>Ko Samui</option>
+                                <option>Kolhapur</option>
+                                <option>Kolkata</option>
+                                <option>Kota Kinabalu</option>
+                                <option>Kozhikode</option>
+                                <option>Kuala Lumpur</option>
+                                <option>Kulu</option>
+                                <option>Kunming</option>
+                                <option>Kuwait</option>
+                                <option>Leh</option>
+                                <option>Lisbon</option>
+                                <option>London</option>
+                                <option>Long Beach</option>
+                                <option>Los Angeles</option>
+                                <option>Lucknow</option>
+                                <option>Lyon</option>
+                                <option>Madinah</option>
+                                <option>Madrid</option>
+                                <option>Madurai</option>
+                                <option>Mahe Island</option>
+                                <option>Male</option>
+                                <option>Manchester</option>
+                                <option>Mangalore</option>
+                                <option>Mauritius</option>
+                                <option>Melbourne</option>
+                                <option>Miami</option>
+                                <option>Milan</option>
+                                <option>Minneapolis</option>
+                                <option>Minsk</option>
+                                <option>Montreal</option>
+                                <option>Moscow</option>
+                                <option>Moscow Russian Federation</option>
+                                <option>Mumbai</option>
+                                <option>Munich</option>
+                                <option>Muscat</option>
+                                <option>Mysore</option>
+                                <option>Nagoya</option>
+                                <option>Nagpur</option>
+                                <option>Nairobi</option>
+                                <option>Nanded</option>
+                                <option>Nanjing</option>
+                                <option>Nasik</option>
+                                <option>New York</option>
+                                <option>Newark</option>
+                                <option>Okinawa</option>
+                                <option>Osaka</option>
+                                <option>Ottawa</option>
+                                <option>P R China</option>
+                                <option>Paris</option>
+                                <option>Patna</option>
+                                <option>Penang</option>
+                                <option>Perth</option>
+                                <option>Phuket</option>
+                                <option>Port Blair</option>
+                                <option>Pune</option>
+                                <option>Qingdao</option>
+                                <option>Raipur</option>
+                                <option>Rajkot</option>
+                                <option>Ranchi</option>
+                                <option>Riyadh</option>
+                                <option>Rome</option>
+                                <option>Sabiha Gokcen</option>
+                                <option>Sabiha Gokcen </option>
+                                <option>Saint Petersburg</option>
+                                <option>Salt Lake City</option>
+                                <option>San Francisco</option>
+                                <option>Sanya</option>
+                                <option>Seattle</option>
+                                <option>Seoul</option>
+                                <option>Shanghai</option>
+                                <option>Sharjah</option>
+                                <option>Shenzhen</option>
+                                <option>Shirdi</option>
+                                <option>Singapore</option>
+                                <option>Split</option>
+                                <option>Srinagar</option>
+                                <option>Stockholm Sweden</option>
+                                <option>Surabaya</option>
+                                <option>Surat</option>
+                                <option>Sydney</option>
+                                <option>Taipei</option>
+                                <option>Tallinn</option>
+                                <option>Tashkent</option>
+                                <option>Thiruvananthapuram</option>
+                                <option>Tiruchirapally</option>
+                                <option>Tirupati</option>
+                                <option>Tokyo</option>
+                                <option>Toronto</option>
+                                <option>Trento</option>
+                                <option>Udaipur</option>
+                                <option>Urumqi</option>
+                                <option>Vancouver</option>
+                                <option>Varanasi</option>
+                                <option>Vienna</option>
+                                <option>Vijayawada</option>
+                                <option>Vishakhapatnam</option>
+                                <option>Warsaw</option>
+                                <option>Washington DC</option>
+                                <option>Xiamen</option>
+                                <option>Yangon</option>
+                                <option>Zagreb</option>
+                                <option>Zurich</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="Dest" id="Dest2" style="width: 100%;" placeholder="Destination" required>
+                                <option value="">Select Destination</option>
+                                <option>Agartala</option>
+                                <option>Ahmedabad</option>
+                                <option>Ajmer</option>
+                                <option>Allahabad</option>
+                                <option>Amritsar</option>
+                                <option>Aurangabad</option>
+                                <option>Bagdogra</option>
+                                <option>Belgaum</option>
+                                <option>Bengaluru</option>
+                                <option>Bhavnagar</option>
+                                <option>Bhopal</option>
+                                <option>Bhubaneswar</option>
+                                <option>Chandigarh</option>
+                                <option>Chennai</option>
+                                <option>Cochin</option>
+                                <option>Coimbatore</option>
+                                <option>Dehra Dun</option>
+                                <option>Delhi</option>
+                                <option>Dharamsala</option>
+                                <option>Dibrugarh</option>
+                                <option>Dimapur</option>
+                                <option>Diu</option>
+                                <option>Durgapur</option>
+                                <option>Gaya</option>
+                                <option>Goa</option>
+                                <option>Gorakhpur</option>
+                                <option>Guwahati</option>
+                                <option>Gwalior</option>
+                                <option>Hubli</option>
+                                <option>Hyderabad</option>
+                                <option>Imphal</option>
+                                <option>Indore</option>
+                                <option>Jabalpur</option>
+                                <option>Jaipur</option>
+                                <option>Jaisalmer</option>
+                                <option>Jammu</option>
+                                <option>Jamnagar</option>
+                                <option>Jharsuguda</option>
+                                <option>Jodhpur</option>
+                                <option>Jorhat</option>
+                                <option>Kannur</option>
+                                <option>Kanpur</option>
+                                <option>Khajuraho</option>
+                                <option>Kochi</option>
+                                <option>Kolhapur</option>
+                                <option>Kolkata</option>
+                                <option>Kozhikode</option>
+                                <option>Kullu</option>
+                                <option>Leh</option>
+                                <option>Lilabari</option>
+                                <option>Lucknow</option>
+                                <option>Madurai</option>
+                                <option>Mangalore</option>
+                                <option>Mumbai</option>
+                                <option>Mysore</option>
+                                <option>Nagpur</option>
+                                <option>Nanded</option>
+                                <option>Nasik</option>
+                                <option>Pantnagar</option>
+                                <option>Pathankot</option>
+                                <option>Patna</option>
+                                <option>Pondicherry</option>
+                                <option>Porbandar</option>
+                                <option>Port Blair</option>
+                                <option>Puducherry</option>
+                                <option>Pune</option>
+                                <option>Raipur</option>
+                                <option>Rajahmundry</option>
+                                <option>Rajkot</option>
+                                <option>Ranchi</option>
+                                <option>Shirdi</option>
+                                <option>Silchar</option>
+                                <option>Simla</option>
+                                <option>Srinagar</option>
+                                <option>Surat</option>
+                                <option>Tezpur</option>
+                                <option>Tiruchirapally</option>
+                                <option>Tirupati</option>
+                                <option>Trivandrum</option>
+                                <option>Tuticorin</option>
+                                <option>Udaipur</option>
+                                <option>Vadodara</option>
+                                <option>Varanasi</option>
+                                <option>Vijayawada</option>
+                                <option>Visakhapatnam</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+
+                <table style="border-spacing: 10%; width: 100%;">
+                    <tr>
+                        <th style="text-align: center; vertical-align: bottom; padding-top: 2%;">
+                            Departure
+                        </th>
+                        <th style="text-align: center; vertical-align: bottom; padding-top: 2%;">
+                            Arrival
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="datetime-local" name="D_Date_Time" id="DDT2" value="2023-01-05T00:00"
+                                min="2023-01-05T00:00"
+                                style="width: 100%; border: 1px solid #aaaaaa; color: #444444; border-radius: 15px; padding-left: 7px;"
+                                placeholder="Departure Date-Time" required>
+                        </td>
+                        <td>
+                            <input type="datetime-local" name="A_Date_Time" id="ADT2" value="2023-01-05T00:00"
+                                min="2023-01-05T00:00"
+                                style="width: 100%; border: 1px solid #aaaaaa; color: #444444; border-radius: 15px; padding-left: 7px;"
+                                placeholder="Arrival Date-Time" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="text-align: center; vertical-align: bottom; padding-top: 2%;">
+                            Airline
+                        </th>
+                        <th style="text-align: center; vertical-align: bottom; padding-top: 2%;">
+                            Class
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select name="Airl" id="Airl2" style="width: 100%;" placeholder="Airline" required>
+                                <option value="">Select Airline</option>
+                                <option>Aer Lingus</option>
+                                <option>Aeroflot Russian Airlines</option>
+                                <option>Air Astana</option>
+                                <option>Air Canada</option>
+                                <option>Air China</option>
+                                <option>Air Connect</option>
+                                <option>Air Europa</option>
+                                <option>Air France</option>
+                                <option>Air India</option>
+                                <option>Air India Express</option>
+                                <option>Air Mauritius</option>
+                                <option>Air Seychelles</option>
+                                <option>AirArabia</option>
+                                <option>AirAsia</option>
+                                <option>Alaska Airlines</option>
+                                <option>Alitalia</option>
+                                <option>All Nippon Airways</option>
+                                <option>American Airlines</option>
+                                <option>Asiana Airlines</option>
+                                <option>Austrian Airways</option>
+                                <option>Azerbaijan Airlines</option>
+                                <option>Bangkok Airways</option>
+                                <option>Belavia Belarusian</option>
+                                <option>Biman Bangladesh</option>
+                                <option>British Airways</option>
+                                <option>Cathay Pacific Airways</option>
+                                <option>China Airlines</option>
+                                <option>China Eastern Airlines</option>
+                                <option>China Southern Airlines</option>
+                                <option>Delta Airlines</option>
+                                <option>Deutsche Bahn Ag</option>
+                                <option>Dragonair</option>
+                                <option>Egypt Airways</option>
+                                <option>El-Al-Israel Airlines</option>
+                                <option>Emirates Airlines</option>
+                                <option>Ethiopian Airlines</option>
+                                <option>Etihad Airways</option>
+                                <option>Eurowings</option>
+                                <option>EVA Airways</option>
+                                <option>Finnair</option>
+                                <option>Flybe</option>
+                                <option>FlyDubai</option>
+                                <option>Garuda Indonesia</option>
+                                <option>GF</option>
+                                <option>GoAir</option>
+                                <option>Gulf Airways</option>
+                                <option>Hahn Air Systems</option>
+                                <option>Hainan Airlines</option>
+                                <option>Hong Kong Airlines</option>
+                                <option>Hong Kong Express Airways</option>
+                                <option>Iberia Airlines</option>
+                                <option>Indigo</option>
+                                <option>Japan Airlines</option>
+                                <option>Jat Airways</option>
+                                <option>Jazeera Airways</option>
+                                <option>Jeju Air</option>
+                                <option>JetBlue Airways</option>
+                                <option>Jetstar Airways</option>
+                                <option>Jetstar Asia</option>
+                                <option>Jetstar Pacific</option>
+                                <option>Juneyao Airlines</option>
+                                <option>Kam Air</option>
+                                <option>Kenya Airways</option>
+                                <option>KLM Airlines</option>
+                                <option>Korean Airways</option>
+                                <option>Kuwait Airways</option>
+                                <option>Livingston Spa</option>
+                                <option>LOT Polish Airlines</option>
+                                <option>Lufthansa Airways</option>
+                                <option>Luxair</option>
+                                <option>Malayasian Airways</option>
+                                <option>MALINDO AIRWAYS</option>
+                                <option>MH</option>
+                                <option>Myanmar Airways Intl</option>
+                                <option>National Air Services</option>
+                                <option>Nepal Airways</option>
+                                <option>Oman Air</option>
+                                <option>Onur Air</option>
+                                <option>Pegasus Airlines</option>
+                                <option>Precision Airlines</option>
+                                <option>Qantas Airways</option>
+                                <option>Qatar Airways</option>
+                                <option>Royal Air Maroc</option>
+                                <option>Royal Brunei Airlines</option>
+                                <option>Royal Jordanian</option>
+                                <option>Rwandair</option>
+                                <option>S7 Airlines</option>
+                                <option>Saudi Arabian Airlines</option>
+                                <option>Scandinavian Airlines</option>
+                                <option>Scoot</option>
+                                <option>Shandong Airlines</option>
+                                <option>Shanghai Airlines</option>
+                                <option>Shenzhen Airlines</option>
+                                <option>Sichuan Airlines</option>
+                                <option>Silk Air</option>
+                                <option>Singapore Airlines</option>
+                                <option>South African Airways</option>
+                                <option>SpiceJet</option>
+                                <option>SriLankan Airlines</option>
+                                <option>Swiss</option>
+                                <option>TAP - Air Portugal</option>
+                                <option>Thai Airways International</option>
+                                <option>Thai Lion Air</option>
+                                <option>Thai Smile</option>
+                                <option>Trujet</option>
+                                <option>Turkish Airlines</option>
+                                <option>Ukraine Intl Airlines</option>
+                                <option>Uni Airways</option>
+                                <option>United Airlines</option>
+                                <option>Ural Airlines</option>
+                                <option>Uzbekistan Airways</option>
+                                <option>Vietnam Airlines</option>
+                                <option>Virgin Atlantic Airways</option>
+                                <option>Vistara</option>
+                                <option>WestJet Airlines</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="seats" id="seats2" style="width: 100%;" placeholder="Class" required>
+                                <option value="Economy">Economy</option>
+                                <option value="Premium Economy">Premium Economy</option>
+                                <option value="Business Class">Business Class</option>
+                                <option value="First Class">First Class</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr style="width: 100%;">
+                        <td colspan="2" class="text-right" style="padding-top: 2%;">
+                            <button class='btn #0d47a1 blue darken-4' type="submit"
+                                style="background-color: #0047AB; color: white; align-items: center; border-radius: 100px; height: 45px; padding: 0 40px;">
+                                <b>Submit</b>
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+
+            <form id="multiCity2" method='POST'>
+                {% csrf_token %}
+                <table style="border-spacing: 10%; width: 100%;">
+                    <tr>
+                        <th style="text-align: center; vertical-align: bottom;">
+                            Source
+                        </th>
+                        <th style="text-align: center; vertical-align: bottom;">
+                            Stop-1
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select name="Src" id="Src3" style="width: 100%;" placeholder="Source" required>
+                                <option value="Select Source">Select Source</option>
+                                <option>Abudhabi</option>
+                                <option>Addis Ababa</option>
+                                <option>Addu City</option>
+                                <option>Agartala</option>
+                                <option>Agatti Island</option>
+                                <option>Agra</option>
+                                <option>Ahmedabad</option>
+                                <option>Aizawl</option>
+                                <option>Al Ain</option>
+                                <option>Allahabad</option>
+                                <option>Almaty</option>
+                                <option>Amritsar</option>
+                                <option>Amsterdam</option>
+                                <option>Antalya</option>
+                                <option>Ashgabat</option>
+                                <option>Astana</option>
+                                <option>Aurangabad</option>
+                                <option>Bagdogra</option>
+                                <option>Baghdad</option>
+                                <option>Bahrain</option>
+                                <option>Baku</option>
+                                <option>Bangkok</option>
+                                <option>Basra</option>
+                                <option>Belgaum</option>
+                                <option>Bengaluru</option>
+                                <option>Bhopal</option>
+                                <option>Bhubaneswar</option>
+                                <option>Bhuj</option>
+                                <option>Birmingham</option>
+                                <option>Bishkek</option>
+                                <option>Brusells</option>
+                                <option>Cairo</option>
+                                <option>Chandigarh</option>
+                                <option>Chennai</option>
+                                <option>Chicago</option>
+                                <option>Chittagong</option>
+                                <option>Cochin</option>
+                                <option>Coimbatore</option>
+                                <option>Cologne</option>
+                                <option>Colombo</option>
+                                <option>Copenhagen</option>
+                                <option>Dammam</option>
+                                <option>Dehra Dun</option>
+                                <option>Delhi</option>
+                                <option>Denpasar</option>
+                                <option>Dhaka</option>
+                                <option>Dharamsala</option>
+                                <option>Dibrugarh</option>
+                                <option>Dimapur</option>
+                                <option>Don Mueang</option>
+                                <option>Dubai</option>
+                                <option>Dushanbe</option>
+                                <option>Frankfurt</option>
+                                <option>Gaya</option>
+                                <option>Goa</option>
+                                <option>Gorakhpur</option>
+                                <option>Guangzhou</option>
+                                <option>Guwahati</option>
+                                <option>Helnski</option>
+                                <option>Herat</option>
+                                <option>Ho Chi Minh City</option>
+                                <option>Hong Kong</option>
+                                <option>Hubli</option>
+                                <option>Hyderabad</option>
+                                <option>Imphal</option>
+                                <option>Indore</option>
+                                <option>Istanbul</option>
+                                <option>Jaipur</option>
+                                <option>Jaisalmer</option>
+                                <option>Jammu</option>
+                                <option>Jeddah</option>
+                                <option>Jodhpur</option>
+                                <option>Johannesberg</option>
+                                <option>Jorhat</option>
+                                <option>Kabul</option>
+                                <option>Kadapa</option>
+                                <option>Kandahar</option>
+                                <option>Kannur</option>
+                                <option>Karachi</option>
+                                <option>Kathmandu</option>
+                                <option>Kigali</option>
+                                <option>Kochi</option>
+                                <option>Kolkata</option>
+                                <option>Kozhikode</option>
+                                <option>Kualalumpur</option>
+                                <option>Kunming</option>
+                                <option>Kuwait</option>
+                                <option>Lahore</option>
+                                <option>Leh</option>
+                                <option>Leipzig</option>
+                                <option>Lilabari</option>
+                                <option>London</option>
+                                <option>Lucknow</option>
+                                <option>Luxembourg</option>
+                                <option>Madrid</option>
+                                <option>Madurai</option>
+                                <option>Male</option>
+                                <option>Malpensa</option>
+                                <option>Manchester</option>
+                                <option>Mandalay</option>
+                                <option>Mangalore</option>
+                                <option>Maruitius</option>
+                                <option>Mashhad</option>
+                                <option>Mazar-I-Sharif</option>
+                                <option>Medina</option>
+                                <option>Melbourne</option>
+                                <option>Moscow</option>
+                                <option>Muenchen</option>
+                                <option>Mumbai</option>
+                                <option>Muscat</option>
+                                <option>Nagpur</option>
+                                <option>Nairobi</option>
+                                <option>Narita</option>
+                                <option>Navoi</option>
+                                <option>New York</option>
+                                <option>Newark</option>
+                                <option>Osaka</option>
+                                <option>Paris</option>
+                                <option>Patna</option>
+                                <option>Peking</option>
+                                <option>Phuket</option>
+                                <option>Pondicherry</option>
+                                <option>Port Blair</option>
+                                <option>Pune</option>
+                                <option>Raipur</option>
+                                <option>Rajahmundry</option>
+                                <option>Rajkot</option>
+                                <option>Ranchi</option>
+                                <option>Rangoon</option>
+                                <option>Reunion</option>
+                                <option>Riyadh</option>
+                                <option>Rome</option>
+                                <option>Salalah</option>
+                                <option>San Francisco</option>
+                                <option>Seoul</option>
+                                <option>Seychelles</option>
+                                <option>Shanghai</option>
+                                <option>Sharjah</option>
+                                <option>Shenzhen</option>
+                                <option>Silchar</option>
+                                <option>Singapore</option>
+                                <option>Srinagar</option>
+                                <option>Stockholm</option>
+                                <option>Surat</option>
+                                <option>Sydney</option>
+                                <option>Taipae</option>
+                                <option>Tangerang</option>
+                                <option>Tashkent</option>
+                                <option>Tehran</option>
+                                <option>Telaviv</option>
+                                <option>Tirupati</option>
+                                <option>Tokyo</option>
+                                <option>Toronto</option>
+                                <option>Trivandrum</option>
+                                <option>Udaipur</option>
+                                <option>Vadodara</option>
+                                <option>Vancouver</option>
+                                <option>Vienna</option>
+                                <option>Vijayawada</option>
+                                <option>Washington Dc</option>
+                                <option>Zurich</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="L1" id="L13" style="width: 100%;" placeholder="Stop-1" required>
+                                <option value="">Select Layover 1</option>
+                                <option>Aberdeen</option>
+                                <option>Abu Dhabi</option>
+                                <option>Addis Ababa</option>
+                                <option>Agartala</option>
+                                <option>Ahmedabad</option>
+                                <option>Aizawl</option>
+                                <option>Almaty</option>
+                                <option>Amman</option>
+                                <option>Amritsar</option>
+                                <option>Amsterdam</option>
+                                <option>Ankara</option>
+                                <option>Ankara </option>
+                                <option>Ashgabat</option>
+                                <option>Astana</option>
+                                <option>Athens</option>
+                                <option>Atlanta</option>
+                                <option>Bagdogra</option>
+                                <option>Bahrain</option>
+                                <option>Baku</option>
+                                <option>Bangalore</option>
+                                <option>Bangkok</option>
+                                <option>Barcelona</option>
+                                <option>Belgrade</option>
+                                <option>Bergamo</option>
+                                <option>Bhopal</option>
+                                <option>Bhubaneswar</option>
+                                <option>Boston</option>
+                                <option>Brisbane</option>
+                                <option>Brussels</option>
+                                <option>Budapest</option>
+                                <option>Cairo</option>
+                                <option>Calgary</option>
+                                <option>Cape Town</option>
+                                <option>Chandigarh</option>
+                                <option>Chengdu</option>
+                                <option>Chennai</option>
+                                <option>Chiang Mai</option>
+                                <option>Chicago</option>
+                                <option>Chittagong</option>
+                                <option>Cochin</option>
+                                <option>Coimbatore</option>
+                                <option>Colombo</option>
+                                <option>Copenhagen</option>
+                                <option>Cuddapah</option>
+                                <option>Dammam</option>
+                                <option>Dar Es Salaam</option>
+                                <option>Dehradun</option>
+                                <option>Delhi</option>
+                                <option>Denpasar</option>
+                                <option>Denver</option>
+                                <option>Detroit</option>
+                                <option>Dhaka</option>
+                                <option>Dibrugarh</option>
+                                <option>Doha</option>
+                                <option>Dubai</option>
+                                <option>Dublin</option>
+                                <option>Durban</option>
+                                <option>Dusseldorf</option>
+                                <option>Edinburgh</option>
+                                <option>Edmonton</option>
+                                <option>Entebbe</option>
+                                <option>Fort Worth</option>
+                                <option>Frankfurt</option>
+                                <option>Fukuoka</option>
+                                <option>Gaya</option>
+                                <option>Geneva</option>
+                                <option>Goa</option>
+                                <option>Guangzhou</option>
+                                <option>Guwahati</option>
+                                <option>Hangzhou</option>
+                                <option>Hanoi</option>
+                                <option>Helsinki</option>
+                                <option>Ho Chi Minh City</option>
+                                <option>Hong Kong</option>
+                                <option>Hubli</option>
+                                <option>Hyderabad</option>
+                                <option>Imphal</option>
+                                <option>Indore</option>
+                                <option>Istanbul</option>
+                                <option>Jabalpur</option>
+                                <option>Jaipur</option>
+                                <option>Jakarta</option>
+                                <option>Jammu</option>
+                                <option>Jeddah</option>
+                                <option>Jodhpur</option>
+                                <option>Johannesburg</option>
+                                <option>JRG</option>
+                                <option>Kabul</option>
+                                <option>Kannur</option>
+                                <option>Kathmandu</option>
+                                <option>Kiev Ukraine</option>
+                                <option>Kigali</option>
+                                <option>Ko Samui</option>
+                                <option>Kolhapur</option>
+                                <option>Kolkata</option>
+                                <option>Kota Kinabalu</option>
+                                <option>Kozhikode</option>
+                                <option>Kuala Lumpur</option>
+                                <option>Kulu</option>
+                                <option>Kunming</option>
+                                <option>Kuwait</option>
+                                <option>Leh</option>
+                                <option>Lisbon</option>
+                                <option>London</option>
+                                <option>Long Beach</option>
+                                <option>Los Angeles</option>
+                                <option>Lucknow</option>
+                                <option>Lyon</option>
+                                <option>Madinah</option>
+                                <option>Madrid</option>
+                                <option>Madurai</option>
+                                <option>Mahe Island</option>
+                                <option>Male</option>
+                                <option>Manchester</option>
+                                <option>Mangalore</option>
+                                <option>Mauritius</option>
+                                <option>Melbourne</option>
+                                <option>Miami</option>
+                                <option>Milan</option>
+                                <option>Minneapolis</option>
+                                <option>Minsk</option>
+                                <option>Montreal</option>
+                                <option>Moscow</option>
+                                <option>Moscow Russian Federation</option>
+                                <option>Mumbai</option>
+                                <option>Munich</option>
+                                <option>Muscat</option>
+                                <option>Mysore</option>
+                                <option>Nagoya</option>
+                                <option>Nagpur</option>
+                                <option>Nairobi</option>
+                                <option>Nanded</option>
+                                <option>Nanjing</option>
+                                <option>Nasik</option>
+                                <option>New York</option>
+                                <option>Newark</option>
+                                <option>Okinawa</option>
+                                <option>Osaka</option>
+                                <option>Ottawa</option>
+                                <option>P R China</option>
+                                <option>Paris</option>
+                                <option>Patna</option>
+                                <option>Penang</option>
+                                <option>Perth</option>
+                                <option>Phuket</option>
+                                <option>Port Blair</option>
+                                <option>Pune</option>
+                                <option>Qingdao</option>
+                                <option>Raipur</option>
+                                <option>Rajkot</option>
+                                <option>Ranchi</option>
+                                <option>Riyadh</option>
+                                <option>Rome</option>
+                                <option>Sabiha Gokcen</option>
+                                <option>Sabiha Gokcen </option>
+                                <option>Saint Petersburg</option>
+                                <option>Salt Lake City</option>
+                                <option>San Francisco</option>
+                                <option>Sanya</option>
+                                <option>Seattle</option>
+                                <option>Seoul</option>
+                                <option>Shanghai</option>
+                                <option>Sharjah</option>
+                                <option>Shenzhen</option>
+                                <option>Shirdi</option>
+                                <option>Singapore</option>
+                                <option>Split</option>
+                                <option>Srinagar</option>
+                                <option>Stockholm Sweden</option>
+                                <option>Surabaya</option>
+                                <option>Surat</option>
+                                <option>Sydney</option>
+                                <option>Taipei</option>
+                                <option>Tallinn</option>
+                                <option>Tashkent</option>
+                                <option>Thiruvananthapuram</option>
+                                <option>Tiruchirapally</option>
+                                <option>Tirupati</option>
+                                <option>Tokyo</option>
+                                <option>Toronto</option>
+                                <option>Trento</option>
+                                <option>Udaipur</option>
+                                <option>Urumqi</option>
+                                <option>Vancouver</option>
+                                <option>Varanasi</option>
+                                <option>Vienna</option>
+                                <option>Vijayawada</option>
+                                <option>Vishakhapatnam</option>
+                                <option>Warsaw</option>
+                                <option>Washington DC</option>
+                                <option>Xiamen</option>
+                                <option>Yangon</option>
+                                <option>Zagreb</option>
+                                <option>Zurich</option>
+                            </select>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <th style="text-align: center; vertical-align: bottom; padding-top: 2%;">
+                            Stop-2
+                        </th>
+                        <th style="text-align: center; vertical-align: bottom; padding-top: 2%;">
+                            Destination
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select name="L2" id="L23" style="width: 100%;" placeholder="Stop2" required>
+                                <option value="">Select Layover 2</option>
+                                <option>Abu Dhabi</option>
+                                <option>Addis Ababa</option>
+                                <option>Agartala</option>
+                                <option>Ahmedabad</option>
+                                <option>Aizawl</option>
+                                <option>Almaty</option>
+                                <option>Amritsar</option>
+                                <option>Amsterdam</option>
+                                <option>Aurangabad</option>
+                                <option>Bagdogra</option>
+                                <option>Bahrain</option>
+                                <option>Bangalore</option>
+                                <option>Bangkok</option>
+                                <option>Bhopal</option>
+                                <option>Bhubaneswar</option>
+                                <option>Cairo</option>
+                                <option>Chandigarh</option>
+                                <option>Chennai</option>
+                                <option>Chicago</option>
+                                <option>Cochin</option>
+                                <option>Coimbatore</option>
+                                <option>Colombo</option>
+                                <option>Dammam</option>
+                                <option>Delhi</option>
+                                <option>Dhaka</option>
+                                <option>Doha</option>
+                                <option>Dubai</option>
+                                <option>Frankfurt</option>
+                                <option>Gaya</option>
+                                <option>Goa</option>
+                                <option>Guangzhou</option>
+                                <option>Guwahati</option>
+                                <option>Helsinki</option>
+                                <option>Hong Kong</option>
+                                <option>Hyderabad</option>
+                                <option>Imphal</option>
+                                <option>Indore</option>
+                                <option>Istanbul</option>
+                                <option>Jaipur</option>
+                                <option>Jammu</option>
+                                <option>Jeddah</option>
+                                <option>Jinan</option>
+                                <option>Jodhpur</option>
+                                <option>Kolkata</option>
+                                <option>Kozhikode</option>
+                                <option>Kuala Lumpur</option>
+                                <option>Kulu</option>
+                                <option>Kunming</option>
+                                <option>Kuwait</option>
+                                <option>Leh</option>
+                                <option>London</option>
+                                <option>Lucknow</option>
+                                <option>Male</option>
+                                <option>Mangalore</option>
+                                <option>Mauritius</option>
+                                <option>Milan</option>
+                                <option>Moscow</option>
+                                <option>Moscow Russian Federation</option>
+                                <option>Mumbai</option>
+                                <option>Munich</option>
+                                <option>Muscat</option>
+                                <option>Nagpur</option>
+                                <option>Nairobi</option>
+                                <option>New York</option>
+                                <option>Newark</option>
+                                <option>P R China</option>
+                                <option>Paris</option>
+                                <option>Patna</option>
+                                <option>Port Blair</option>
+                                <option>Pune</option>
+                                <option>Raipur</option>
+                                <option>Rajkot</option>
+                                <option>Ranchi</option>
+                                <option>Riyadh</option>
+                                <option>Rome</option>
+                                <option>Sanya</option>
+                                <option>Seoul</option>
+                                <option>Shanghai</option>
+                                <option>Singapore</option>
+                                <option>Srinagar</option>
+                                <option>Surat</option>
+                                <option>Taipei</option>
+                                <option>Thiruvananthapuram</option>
+                                <option>Tokyo</option>
+                                <option>Toronto</option>
+                                <option>Udaipur</option>
+                                <option>Varanasi</option>
+                                <option>Vienna</option>
+                                <option>Vijayawada</option>
+                                <option>Vishakhapatnam</option>
+                                <option>Warsaw</option>
+                                <option>Yangon</option>
+                                <option>Zurich</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="Dest" id="Dest3" style="width: 100%;" placeholder="Destination" required>
+                                <option value="">Select Destination</option>
+                                <option>Agartala</option>
+                                <option>Ahmedabad</option>
+                                <option>Ajmer</option>
+                                <option>Allahabad</option>
+                                <option>Amritsar</option>
+                                <option>Aurangabad</option>
+                                <option>Bagdogra</option>
+                                <option>Belgaum</option>
+                                <option>Bengaluru</option>
+                                <option>Bhavnagar</option>
+                                <option>Bhopal</option>
+                                <option>Bhubaneswar</option>
+                                <option>Chandigarh</option>
+                                <option>Chennai</option>
+                                <option>Cochin</option>
+                                <option>Coimbatore</option>
+                                <option>Dehra Dun</option>
+                                <option>Delhi</option>
+                                <option>Dharamsala</option>
+                                <option>Dibrugarh</option>
+                                <option>Dimapur</option>
+                                <option>Diu</option>
+                                <option>Durgapur</option>
+                                <option>Gaya</option>
+                                <option>Goa</option>
+                                <option>Gorakhpur</option>
+                                <option>Guwahati</option>
+                                <option>Gwalior</option>
+                                <option>Hubli</option>
+                                <option>Hyderabad</option>
+                                <option>Imphal</option>
+                                <option>Indore</option>
+                                <option>Jabalpur</option>
+                                <option>Jaipur</option>
+                                <option>Jaisalmer</option>
+                                <option>Jammu</option>
+                                <option>Jamnagar</option>
+                                <option>Jharsuguda</option>
+                                <option>Jodhpur</option>
+                                <option>Jorhat</option>
+                                <option>Kannur</option>
+                                <option>Kanpur</option>
+                                <option>Khajuraho</option>
+                                <option>Kochi</option>
+                                <option>Kolhapur</option>
+                                <option>Kolkata</option>
+                                <option>Kozhikode</option>
+                                <option>Kullu</option>
+                                <option>Leh</option>
+                                <option>Lilabari</option>
+                                <option>Lucknow</option>
+                                <option>Madurai</option>
+                                <option>Mangalore</option>
+                                <option>Mumbai</option>
+                                <option>Mysore</option>
+                                <option>Nagpur</option>
+                                <option>Nanded</option>
+                                <option>Nasik</option>
+                                <option>Pantnagar</option>
+                                <option>Pathankot</option>
+                                <option>Patna</option>
+                                <option>Pondicherry</option>
+                                <option>Porbandar</option>
+                                <option>Port Blair</option>
+                                <option>Puducherry</option>
+                                <option>Pune</option>
+                                <option>Raipur</option>
+                                <option>Rajahmundry</option>
+                                <option>Rajkot</option>
+                                <option>Ranchi</option>
+                                <option>Shirdi</option>
+                                <option>Silchar</option>
+                                <option>Simla</option>
+                                <option>Srinagar</option>
+                                <option>Surat</option>
+                                <option>Tezpur</option>
+                                <option>Tiruchirapally</option>
+                                <option>Tirupati</option>
+                                <option>Trivandrum</option>
+                                <option>Tuticorin</option>
+                                <option>Udaipur</option>
+                                <option>Vadodara</option>
+                                <option>Varanasi</option>
+                                <option>Vijayawada</option>
+                                <option>Visakhapatnam</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="text-align: center; vertical-align: bottom; padding-top: 2%;">
+                            Departure
+                        </th>
+                        <th style="text-align: center; vertical-align: bottom; padding-top: 2%;">
+                            Arrival
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="datetime-local" name="D_Date_Time" id="DDT3" value="2023-01-05T00:00"
+                                min="2023-01-05T00:00" placeholder="Departure Date-Time"
+                                style="width: 100%; border: 1px solid #aaaaaa; color: #444444; border-radius: 15px; padding-left: 7px;"
+                                required>
+                        </td>
+                        <td>
+                            <input type="datetime-local" name="A_Date_Time" id="ADT3" value="2023-01-05T00:00"
+                                min="2023-01-05T00:00" placeholder="Arrival Date-Time"
+                                style="width: 100%; border: 1px solid #aaaaaa; color: #444444; border-radius: 15px; padding-left: 7px;"
+                                required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="text-align: center; vertical-align: bottom; padding-top: 2%;">
+                            Airline
+                        </th>
+                        <th style="text-align: center; vertical-align: bottom; padding-top: 2%;">
+                            Class
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select name="Airl" id="Airl3" style="width: 100%;" placeholder="Airline" required>
+                                <option value="">Select Airline</option>
+                                <option>Aer Lingus</option>
+                                <option>Aeroflot Russian Airlines</option>
+                                <option>Air Astana</option>
+                                <option>Air Canada</option>
+                                <option>Air China</option>
+                                <option>Air Connect</option>
+                                <option>Air Europa</option>
+                                <option>Air France</option>
+                                <option>Air India</option>
+                                <option>Air India Express</option>
+                                <option>Air Mauritius</option>
+                                <option>Air Seychelles</option>
+                                <option>AirArabia</option>
+                                <option>AirAsia</option>
+                                <option>Alaska Airlines</option>
+                                <option>Alitalia</option>
+                                <option>All Nippon Airways</option>
+                                <option>American Airlines</option>
+                                <option>Asiana Airlines</option>
+                                <option>Austrian Airways</option>
+                                <option>Azerbaijan Airlines</option>
+                                <option>Bangkok Airways</option>
+                                <option>Belavia Belarusian</option>
+                                <option>Biman Bangladesh</option>
+                                <option>British Airways</option>
+                                <option>Cathay Pacific Airways</option>
+                                <option>China Airlines</option>
+                                <option>China Eastern Airlines</option>
+                                <option>China Southern Airlines</option>
+                                <option>Delta Airlines</option>
+                                <option>Deutsche Bahn Ag</option>
+                                <option>Dragonair</option>
+                                <option>Egypt Airways</option>
+                                <option>El-Al-Israel Airlines</option>
+                                <option>Emirates Airlines</option>
+                                <option>Ethiopian Airlines</option>
+                                <option>Etihad Airways</option>
+                                <option>Eurowings</option>
+                                <option>EVA Airways</option>
+                                <option>Finnair</option>
+                                <option>Flybe</option>
+                                <option>FlyDubai</option>
+                                <option>Garuda Indonesia</option>
+                                <option>GF</option>
+                                <option>GoAir</option>
+                                <option>Gulf Airways</option>
+                                <option>Hahn Air Systems</option>
+                                <option>Hainan Airlines</option>
+                                <option>Hong Kong Airlines</option>
+                                <option>Hong Kong Express Airways</option>
+                                <option>Iberia Airlines</option>
+                                <option>Indigo</option>
+                                <option>Japan Airlines</option>
+                                <option>Jat Airways</option>
+                                <option>Jazeera Airways</option>
+                                <option>Jeju Air</option>
+                                <option>JetBlue Airways</option>
+                                <option>Jetstar Airways</option>
+                                <option>Jetstar Asia</option>
+                                <option>Jetstar Pacific</option>
+                                <option>Juneyao Airlines</option>
+                                <option>Kam Air</option>
+                                <option>Kenya Airways</option>
+                                <option>KLM Airlines</option>
+                                <option>Korean Airways</option>
+                                <option>Kuwait Airways</option>
+                                <option>Livingston Spa</option>
+                                <option>LOT Polish Airlines</option>
+                                <option>Lufthansa Airways</option>
+                                <option>Luxair</option>
+                                <option>Malayasian Airways</option>
+                                <option>MALINDO AIRWAYS</option>
+                                <option>MH</option>
+                                <option>Myanmar Airways Intl</option>
+                                <option>National Air Services</option>
+                                <option>Nepal Airways</option>
+                                <option>Oman Air</option>
+                                <option>Onur Air</option>
+                                <option>Pegasus Airlines</option>
+                                <option>Precision Airlines</option>
+                                <option>Qantas Airways</option>
+                                <option>Qatar Airways</option>
+                                <option>Royal Air Maroc</option>
+                                <option>Royal Brunei Airlines</option>
+                                <option>Royal Jordanian</option>
+                                <option>Rwandair</option>
+                                <option>S7 Airlines</option>
+                                <option>Saudi Arabian Airlines</option>
+                                <option>Scandinavian Airlines</option>
+                                <option>Scoot</option>
+                                <option>Shandong Airlines</option>
+                                <option>Shanghai Airlines</option>
+                                <option>Shenzhen Airlines</option>
+                                <option>Sichuan Airlines</option>
+                                <option>Silk Air</option>
+                                <option>Singapore Airlines</option>
+                                <option>South African Airways</option>
+                                <option>SpiceJet</option>
+                                <option>SriLankan Airlines</option>
+                                <option>Swiss</option>
+                                <option>TAP - Air Portugal</option>
+                                <option>Thai Airways International</option>
+                                <option>Thai Lion Air</option>
+                                <option>Thai Smile</option>
+                                <option>Trujet</option>
+                                <option>Turkish Airlines</option>
+                                <option>Ukraine Intl Airlines</option>
+                                <option>Uni Airways</option>
+                                <option>United Airlines</option>
+                                <option>Ural Airlines</option>
+                                <option>Uzbekistan Airways</option>
+                                <option>Vietnam Airlines</option>
+                                <option>Virgin Atlantic Airways</option>
+                                <option>Vistara</option>
+                                <option>WestJet Airlines</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="seats" id="seats3" style="width: 100%;" placeholder="Class" required>
+                                <option value="Economy">Economy</option>
+                                <option value="Premium Economy">Premium Economy</option>
+                                <option value="Business Class">Business Class</option>
+                                <option value="First Class">First Class</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr style="width: 100%;">
+                        <td colspan="2" class="text-right" style="padding-top: 2%;">
+                            <button class='btn #0d47a1 blue darken-4' type="submit"
+                                style="background-color: #0047AB; color: white; align-items: center; border-radius: 100px; height: 45px; padding: 0 40px;">
+                                <b>Submit</b>
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+
+            <div id="coupon">
+                <div style="height: 70px;">
+                    <h1 style="font-weight: 600; font-size: 36px; line-height: 22px; text-align: center; align-items: center; letter-spacing: -0.408px; margin-top: 10px;">Explore coupons for exciting discounts!</h1>
+                </div>
+            </div>
+            <div id="coupon1" style="height: 80px;">
+                <div style="background-color: white; margin:0 auto; height: 240px; width: 60%; box-shadow: 0px 4px 50px rgba(0,0,0,0.1); border-radius: 25px;">
+                    <div style="position: relative; margin-top: 30px; opacity: 95%; background-color: #DDEDFF; height: 28px; width: 30%; float: left;"></div>
+                    <div style="position: relative; margin-top: 30px; opacity: 95%; height: 28px; width: 30%; float: left; margin-left: 27.8px; margin-right: 27.8px;">
+                        <p style="text-align: center;">Available Coupons <i class="fa-solid fa-percent" style="padding-left: 3px;"></i></p>
+                    </div>
+                    <div style="position: relative; margin-top: 30px; opacity: 95%; background-color: #DDEDFF; height: 28px; width: 30%; float: left;"></div>
+                    <div style="width: 100%; height: 180px; float: left;">
+                        <div style="position: relative; width: 30%; height: 180px; float: left; margin-top: 25px;">
+                            <div style="width: 100%; height: 50px; float: left;">
+                                <p style="width: 50%; height: 28px; padding-top: 1.5px; margin-left: 45px; text-align: center; align-items: center; background-color: #DDEDFF; color: #0047AB; border-radius: 139px;">Skyy 5</p>
+                            </div>
+                            <div style="width: 100%; height: 50px; float: left;">
+                                <p style="width: 50%; height: 28px; padding-top: 1.5px; margin-left: 45px; text-align: center; align-items: center; background-color: #DDEDFF; color: #0047AB; border-radius: 25px; font-size: 16px; font-weight: 400; font-style: normal; letter-spacing: -0.408px;">Skyy 20</p>
+                            </div>
+                            <div style="width: 100%; height: 50px; float: left;">
+                                <p style="width: 50%; height: 28px; padding-top: 1.5px; margin-left: 45px; text-align: center; align-items: center; background-color: #DDEDFF; color: #0047AB; border-radius: 25px;">Skyy 50</p>
+                            </div> 
+                        </div>
+
+                        <div style="position: relative; width: 70%; height: 180px; float: left; margin-top: 25px;">
+                            <div style="width: 100%; height: 50px; float: left;">
+                                <p style="width: 100%; height: 28px;  margin-left: 15px;">
+                                    Get 5% discount on your flight booking.
+                                </p>
+                            </div>
+                            <div style="width: 100%; height: 50px; float: left;">
+                                <p style="width: 100%; height: 28px; margin-left: 15px;">
+                                    Get 20% discount on your flight booking.
+                                </p>
+                            </div>
+                            <div style="width: 100%; height: 50px; float: left;">
+                                <p style="width: 100%; height: 28px; margin-left: 15px;">
+                                    Get 50% discount on your flight booking.
+                                </p>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- For Extra space -->
+        <div id="coupon2" style="height: 127px;"></div>
+    </div>
+</div>
+<script>
+    window.onload = function () {
+        document.getElementById("oneWay").style.display = "block";
+        document.getElementById("multiCity1").style.display = "none";
+        document.getElementById("multiCity2").style.display = "none";
+        document.getElementById("coupon").style.display = "none";
+        document.getElementById("coupon1").style.display = "none";
+        document.getElementById("coupon2").style.display = "none";
+    };
+
+    function asd(a) {
+        if (a == 1) {
+            document.getElementById("oneWay").style.display = "block";
+            document.getElementById("multiCity1").style.display = "none";
+            document.getElementById("multiCity2").style.display = "none";
+            document.getElementById("coupon").style.display = "none";
+            document.getElementById("coupon1").style.display = "none";
+            document.getElementById("coupon2").style.display = "none";
+            document.getElementById("icon1").style.color = "#0047AB";
+            document.getElementById("icon2").style.color = "white";
+            document.getElementById("icon3").style.color = "white";
+        }
+        else if (a == 2) {
+            document.getElementById("multiCity1").style.display = "block";
+            document.getElementById("multiCity2").style.display = "none";
+            document.getElementById("oneWay").style.display = "none";
+            document.getElementById("coupon").style.display = "none";
+            document.getElementById("coupon1").style.display = "none";
+            document.getElementById("coupon2").style.display = "none";
+            document.getElementById("icon1").style.color = "white"
+            document.getElementById("icon2").style.color = "#0047AB"
+            document.getElementById("icon3").style.color = "white"
+        }
+        else if (a == 3) {
+            document.getElementById("multiCity2").style.display = "block";
+            document.getElementById("multiCity1").style.display = "none";
+            document.getElementById("oneWay").style.display = "none";
+            document.getElementById("coupon").style.display = "none";
+            document.getElementById("coupon1").style.display = "none";
+            document.getElementById("coupon2").style.display = "none";
+            document.getElementById("icon1").style.color = "white"
+            document.getElementById("icon2").style.color = "#0047AB"
+            document.getElementById("icon3").style.color = "white"
+        }
+        else {
+            document.getElementById("coupon").style.display = "block";
+            document.getElementById("coupon1").style.display = "block";
+            document.getElementById("coupon2").style.display = "block";
+            document.getElementById("oneWay").style.display = "none";
+            document.getElementById("multiCity1").style.display = "none";
+            document.getElementById("multiCity2").style.display = "none";
+            document.getElementById("icon1").style.color = "white"
+            document.getElementById("icon2").style.color = "white"
+            document.getElementById("icon3").style.color = "#0047AB"
+        }
+    }
+</script>
+
+<section class="places" id="places">
+    <div style="width: 100%; height: 25px; margin-top: 65px;">
+        <h3 style="font-weight: 900; margin-left: 6.5%; margin-right: 6.1%;">Popular places to visit</h3>
+    </div>
+    <div style="width: 100%; height: 265px; margin-top: 45px;">
+        <div class="cards" style="width: 21%; height: 265px; float: left;
+        transition: 0.3s; margin: 0px 5px; margin-left: 6.5%; border-radius: 25px;">
+            <img src="../static/img/Singapore image.png" alt="Singapore" style="width:100%; height: 170px;">
+            <br>
+            <div style="margin-top: 15px; margin-left: 15px; margin-bottom: 10px;">
+                <p style="color: #717070;">Quarantine-Free</p>
+                <p style="color: #717070; margin-top: -6px;">Covid-19 test not required</p>
+            </div>
+        </div>
+        <div class="cards" style="width: 21%; height: 265px; float: left;
+        transition: 0.3s; margin: 0px 5px; border-radius: 25px;">
+            <img src="../static/img/Australia image.png" alt="Australia" style="width:100%; height: 170px;">
+            <br>
+            <div style="margin-top: 15px; margin-left: 15px; margin-bottom: 10px;">
+                <p style="color: #717070;">Quarantine-Free</p>
+                <p style="color: #717070; margin-top: -6px;">Covid-19 test not required</p>
+            </div>
+        </div>
+        <div class="cards" style="width: 21%; height: 265px; float: left;
+        transition: 0.3s; margin: 0px 5px; border-radius: 25px;">
+            <img src="../static/img/U.K image.png" alt="U.K" style="width:100%; height: 170px;">
+            <br>
+            <div style="margin-top: 15px; margin-left: 15px; margin-bottom: 10px;">
+                <p style="color: #717070;">Quarantine-Free</p>
+                <p style="color: #717070; margin-top: -6px;">Covid-19 test not required</p>
+            </div>
+        </div>
+        <div class="cards" style="width: 21%; height: 265px; float: left;
+        transition: 0.3s; margin: 0px 5px; margin-right: 6.1%; border-radius: 25px;">
+            <img src="../static/img/Indonesia Image.png" alt="Indonesia" style="width:100%; height: 170px;">
+            <br>
+            <div style="margin-top: 15px; margin-left: 15px; margin-bottom: 10px;">
+                <p style="color: #717070;">Quarantine may be required</p>
+                <p style="color: #717070; margin-top: -6px;">Covid-19 test required</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="airlines" id="airlines">
+    <div style="width: 100%; height: 25px; margin-top: 65px;">
+        <h3 style="font-weight: 900; margin-left: 6.5%;">Popular Airlines</h3>
+    </div>
+    <div style="width: 100%; height: 265px; margin-top: 45px;">
+        <div class="cards" style="width: 21%; height: 265px; float: left;
+        transition: 0.3s; margin: 0px 5px; margin-left: 6.5%; border-radius: 25px;">
+            <img src="../static/img/Indigo.png" alt="Indigo Airline" style="width:100%">
+            <br>
+            <div style="margin-top: 24px; margin-left: 15px; margin-bottom: 10px;">
+                <p style="color: #717070; font-weight: 600; font-size: 20px; letter-spacing: -0.408px;">Indigo
+                    Airlines</p>
+            </div>
+        </div>
+        <div class="cards" style="width: 21%; height: 265px; float: left;
+        transition: 0.3s; margin: 0px 5px; border-radius: 25px;">
+            <img src="../static/img/Vistara.png" alt="Vistara Airline" style="width:100%">
+            <br>
+            <div style="margin-top: 24px; margin-left: 15px; margin-bottom: 10px;">
+                <p style="color: #717070; font-weight: 600; font-size: 20px; letter-spacing: -0.408px;">Air Vistara
+                </p>
+            </div>
+        </div>
+        <div class="cards" style="width: 21%; height: 265px; float: left; 
+        transition: 0.3s; margin: 0px 5px; border-radius: 25px;">
+            <img src="../static/img/Etihad.png" alt="Etihad Airline" style="width:100%">
+            <br>
+            <div style="margin-top: 24px; margin-left: 15px; margin-bottom: 10px;">
+                <p style="color: #717070; font-weight: 600; font-size: 20px; letter-spacing: -0.408px;">Etihad
+                    Airways</p>
+            </div>
+        </div>
+        <div class="cards" style="width: 21%; height: 265px; float: left;
+        transition: 0.3s; margin: 0px 5px; border-radius: 25px;">
+            <img src="../static/img/Emirates.png" alt="Emirates Airline" style="width:100%">
+            <br>
+            <div style="margin-top: 24px; margin-left: 15px; margin-bottom: 10px;">
+                <p style="color: #717070; font-weight: 600; font-size: 20px; letter-spacing: -0.408px;">Fly Emirates
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="mock_up" id="mock_up">
+    <div
+        style="background-color: #f0f0f0; width: 87%; height: 600px; margin-top: 100px; margin-bottom: 110px; margin-left: 6.5%; border-radius: 35px; box-shadow: 0px 4px 3px rgba(0,0,0,0.15);">
+        <div
+            style="background-color: black; width: 45%; height: 600px; border-radius: 35px 0px 0px 35px; float: left;">
+            <img src="../static/img/SKYY_Mobile.png" alt="App Mock-up" style="height: 600px; margin-left: 81px;">
+        </div>
+        <div style="width: 55%; height: 600px; border-radius: 0px 15px 15px 0px; float: left;">
+            <div style="width: 100%; height: 100px;">
+                <h3 style="font-weight: 900; font-size: 31px; margin-left: 45px; margin-top: 30px;">Our App is in
+                    the making.</h3>
+            </div>
+            <div style="width: 100%; height: 300px; margin-top: 20px;">
+                <div style="width: 15%; height: 300px; float: left;">
+                    <div style="width: 100%; height: 59px; float: left;">
+                        <i id="icon_tick1" class="fa-sharp fa-solid fa-circle-check fa-xl"
+                            style="position: relative; padding-right: 4%; color: #0047AB; margin-left: 48px;"></i>
+                    </div>
+                    <div style="width: 100%; height: 59px; margin-top: 20px; float: left;">
+                        <i id="icon_tick2" class="fa-sharp fa-solid fa-circle-check fa-xl"
+                            style="position: relative; padding-right: 4%; color: #0047AB; margin-left: 48px; margin-top: 20px;"></i>
+                    </div>
+                    <div style="width: 100%; height: 59px; margin-top: 20px; float: left;">
+                        <i id="icon_tick3" class="fa-sharp fa-solid fa-circle-check fa-xl"
+                            style="width: 40%; position: relative; padding-right: 4%; color: #0047AB; margin-left: 48px; margin-top: 30px;"></i>
+                    </div>
+                </div>
+                <div style="width: 85%; height: 300px; float: left;">
+                    <p style="margin-right: 100px; font-weight:600; font-size: 16px; letter-spacing: 0.408px; color: #717070;">
+                        More than 10 exciting features available only for app users.
+                    </p>
+                    <br>
+                    <p style="margin-right: 100px; font-weight:600; font-size: 16px; letter-spacing: 0.408px; color: #717070;">Explore Popular
+                        Destinations, Weekend Getaways, Travel News, etc.
+                    </p>
+                    <br>
+                    <p style="margin-right: 100px; font-weight:600; font-size: 16px; letter-spacing: 0.408px; color: #717070;">Check out the
+                        Figma Prototype of our SKYY website by clicking
+                        below.</p>
+                </div>
+                <div style="width: 100%; height: 180px; float: left;">
+                    <a href="https://www.figma.com/file/QRp6S99cfFiqOMBY4qGOBI/Home-page?node-id=1%3A2&t=sxWhZVMqKXXIiNBs-1" target="_blank" style="text-decoration: none;">
+                    <button type="button" class="btn btn-dark btn-lg"
+                        style="margin-left: 37px; background-color: black; color: white; width: 250px; align-items: center; text-align: center; border-radius: 15px; height: 80px; font-weight: 600; font-size: 30px; filter: drop-shadow(0px 4px 4px rgba(0,0,0,0.25));">
+                        <div style="width: 30%; height: 70px; float: left;">
+                            <img src="../static/img/Figma_icon.png" alt="Figma Icon"
+                                style="width: 88px; height: 56px; padding-right: 30px; margin-top: 4px;">
+                        </div>
+                        <div style="width: 70%; height: 70px; float: left; margin-top: 8px;">
+                            <b>Figma</b>
+                        </div>
+                    </button>
+                </a>
+                </div>
+            </div>
+        </div>
+</section>
+
+{% endblock %}

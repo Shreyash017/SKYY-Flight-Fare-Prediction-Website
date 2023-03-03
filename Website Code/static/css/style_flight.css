@@ -1,0 +1,83 @@
+* {
+    font-family: Montserrat;
+    box-sizing: border-box;
+}
+
+.navbar-scrolled {
+    background-color: #002860;
+}
+
+.nav-item {
+    /* padding: 0px 0px 0px ; */
+    padding-left: 17%;
+    /* padding: 20px; */
+}
+
+.container {
+    /* background-color: black; */
+    background-size: cover;
+    position: relative;
+    margin-top: -10%;
+    margin-left: 6.1%;
+    margin-right: 6.1%;
+    /* margin-right: -5%; */
+    width: 100%;
+    /* padding-right: 10%; */
+    /* border-radius: 2px; */
+
+}
+
+.form-content {
+    /* position: absolute; */
+    background-color: white;
+    border-radius: 0px 15px 25px 25px;
+    box-shadow: 0 4px 50px rgba(0, 0, 0, 0.25);
+    width: 93.5%;
+    padding-top: 2.5%;
+    padding-bottom: 2.5%;
+    padding-left: 5%;
+    padding-right: 5%;
+    /* margin-right: -10%; */
+    /* padding-right: 1%; */
+}
+
+.button-color {
+    background-color: white;
+}
+
+/* table, th, td {
+                        border-radius: 10px;
+            border-spacing: 10px;
+        } */
+
+/* table { */
+/* border-collapse: separate; */
+/* border-spacing: 1; */
+/* } */
+
+/* th {
+            background-color: #4287f5;
+            color: white;
+        } */
+
+th,
+td {
+    /* width: 150px; */
+    /* text-align: center; */
+    /* */
+    padding: 0 1.5% 0.5% 0;
+}
+
+.cards {
+    box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.12);
+    transition: 0.3s;
+}
+
+.cards:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.my-class-section {
+    border-radius: 15px !important;
+    /* height: 48px; */
+}
