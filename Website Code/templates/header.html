@@ -44,6 +44,7 @@
             font-family: Montserrat;
             box-sizing: border-box;
         }
+
         .nav-item {
             padding-left: 17%;
         }
@@ -52,7 +53,7 @@
 </head>
 
 <body>
-        <nav class="navbar fixed-top navbar-expand-lg navbar-light">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light">
         <div class="container-fluid">
             <div style="height: 100%; padding: 14px 0px 0px 14px;">
                 <a href="{% url 'home' %}" class="navbar-brand">
@@ -63,19 +64,18 @@
                 style="padding-left: 62%; padding-top: 14px;">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" style="color: {{ color }}; font-family: Montserrat;"
-                            href="{% url 'home' %}"><b>Home</b></a>
+                        <a class="nav-link active" aria-current="page"
+                            style="color: {{ color }}; font-family: Montserrat;" href="{% url 'home' %}"><b>Home</b></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" style="color: {{ color }}; font-family: Montserrat;"
                             href="{% url 'flights' %}"><b>Flights</b></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" style="color: {{ color }}; font-family: Montserrat;" href="{% url 'about-us' %}"><b>About</b></a>
+                        <a class="nav-link" style="color: {{ color }}; font-family: Montserrat;"
+                            href="{% url 'about-us' %}"><b>About</b></a>
                     </li>
                 </ul>
             </div>
-        </div> 
+        </div>
     </nav>
-    
-    

@@ -1,8 +1,8 @@
-import warnings
-warnings.filterwarnings('ignore')
 from django.shortcuts import render
 import joblib
 from datetime import datetime
+import warnings
+warnings.filterwarnings('ignore')
 
 
 def flights(request):
@@ -24,6 +24,7 @@ def flights(request):
             A_Date_Time = request.POST["A_Date_Time"]
             Airl = request.POST["Airl"]
             Seats = request.POST["seats"]
+            
             try:
                 L1 = request.POST["L1"]
                 N_Stops = 1
@@ -101,8 +102,8 @@ def flights(request):
                 }
             else:
                 loaded_leLayover1 = joblib.load('label_encoder_layover1.pkl')
-                loaded_leLayover2 = joblib.load('label_encoder_layover2.pkl')
                 L1_New = loaded_leLayover1.transform([L1])
+                loaded_leLayover2 = joblib.load('label_encoder_layover2.pkl')
                 L2_New = loaded_leLayover2.transform([L2])
 
                 loaded_model = joblib.load("farePrediction_model_RFR_multiCity2.pkl")
@@ -130,6 +131,7 @@ def flights(request):
 
             return render(request, "tickets.html", data)
     except:
-        print("Failed")
+        print("Exception")
+        pass
 
     return render(request, "flights.html", data)

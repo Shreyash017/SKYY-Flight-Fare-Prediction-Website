@@ -25,4 +25,3 @@ def ticket(request):
         "css" : "/static/css/style_ticket.css",
     }
     return render(request, "tickets.html", data)
-
